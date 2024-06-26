@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            opacity: 0;
+            animation: slideIn 2s ease forwards;
+            transform: translateX(100%);
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(100%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0%);
+            }
+        }
+        /* Header styles */
+        header {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+            text-align: center;
+        }
+        header a {
+            color: white;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+        header a:hover {
+            text-decoration: underline;
+        }
+        /* Dashboard container */
+        .dashboard-container {
+        max-width: 100%;
+       
+        height: 100vh;
+        padding: 20px;
+        background-image: url("{% static 'one.webp' %}"); /* Add this line */
+        background-size: cover; /* Add this line */
+        background-position: center; /* Add this line */
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative; /* Set container position to relative */
+    }
+       
+        /* Dashboard section styles */
+        .dashboard-section {
+            margin-bottom: 20px;
+            text-align: center; /* Center align the content */
+        }
+        .dashboard-section h2 {
+            color: #007bff;
+            margin-bottom: 10px;
+        }
+        .dashboard-section p {
+            color: #555;
+        }
+        .dashboard-section a {
+            display: inline-block;
+            background-color: #122130;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .dashboard-section a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <div class="dashboard-container">
+        <h1>QUISA</h1>
+        <!-- Add the picture here -->
+
+        <div class="dashboard-section">
+            <h2>Create Exam</h2>
+            <p>Create a new exam with questions.</p>
+            <a href="{% url 'unique_code' %}">Create Exam</a>
+        </div>
+        <div class="dashboard-section">
+            <h2>Join Exam</h2>
+            <p>Join an existing exam to attempt.</p>
+            <a href="{% url 'take_exam' %}">Join Exam</a>
+        </div>
+    </div>
+
+</body>
+</html>

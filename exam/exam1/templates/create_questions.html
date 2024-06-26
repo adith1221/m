@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Questions</title>
+    <style>
+        /* Style for the form */
+        form {
+            max-width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        /* Style for the form fields */
+        form input[type="text"], 
+        form select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+        /* Style for the submit button */
+        form button[type="submit"] {
+            background-color: #333;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        /* Style for the submit button on hover */
+        form button[type="submit"]:hover {
+            background-color: #333;
+        }
+        /* Style for the view button */
+        .view-button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #333;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+        }
+        /* Style for the view button on hover */
+        .view-button:hover {
+            background-color: #333;
+        }
+    </style>
+</head>
+<body>
+    {% include 'header.html' %}
+    <h1>Create Questions</h1>
+    
+    
+    <form method="post">
+        {% csrf_token %}
+        <div class="question_fields">
+            <label for="id_question_text">Question Text:</label><br>
+            {{ form.question_text }}<br>
+            <label for="id_option1">Option 1:</label><br>
+            {{ form.option1 }}<br>
+            <label for="id_option2">Option 2:</label><br>
+            {{ form.option2 }}<br>
+            <label for="id_option3">Option 3:</label><br>
+            {{ form.option3 }}<br>
+            <label for="id_option4">Option 4:</label><br>
+            {{ form.option4 }}<br>
+            <label for="id_correct_option">Correct Option:</label><br>
+            {{ form.correct_option }}<br><br>
+            <label for="id_time_to_answer">Time to Answer (seconds):</label><br>
+            {{ form.time_to_answer }}<br><br>
+            <!-- Input field for the unique code -->
+            <label for="id_unique_code">Unique Code:</label><br>
+            <input type="text" id="id_unique_code" name="unique_code" placeholder="enter that created code Eg:VDHF3JE"><br><br>
+            <button type="submit">Submit</button>
+        </div>
+    </form>
+
+    <!-- Specify number of questions outside the form -->
+    
+    
+    <!-- View all questions button -->
+    <a href="{% url 'view_questions' %}" class="view-button">View All Questions</a>
+
+
+</body>
+</html>

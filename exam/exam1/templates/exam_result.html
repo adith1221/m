@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Result</title>
+    <style>
+        /* General styles */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+        }
+        p {
+            text-align: center;
+        }
+        div {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            text-align: center;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        /* Styles for the tick mark */
+        .correct-answer::before {
+            content: '\2714'; /* Unicode character for a tick mark */
+            color: green; /* Green color for correct answer */
+            margin-right: 5px;
+        }
+        /* Styles for the cross mark */
+        .wrong-answer::before {
+            content: '\2718'; /* Unicode character for a cross mark */
+            color: red; /* Red color for wrong answer */
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Exam Result</h1>
+    <p>Total Marks: {{ total_marks }}</p>
+
+    <div>
+        <h2>Attempted Questions and Correct Answers</h2>
+        <ul>
+            {% for question, answered_question in attempted_questions.items %}
+                <li>
+                    Q:{{ question.question_text }}
+                    <ul>
+                        <li {% if answered_question.selected_option == answered_question.correct_answer %}class="correct-answer"{% else %}class="wrong-answer"{% endif %}>
+                            Your Answer: {{ answered_question.selected_option }}
+                        </li>
+                        <li>Correct Answer: {{ answered_question.correct_answer }}</li>
+                    </ul>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
